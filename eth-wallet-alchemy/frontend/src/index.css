@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* We're using the link tags in index.html instead of CSS imports for better performance */
+/* Font families are configured in tailwind.config.js */
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Font feature settings for Inter font */
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* Dark theme (default) */
+.theme-dark, :root {
+  color-scheme: dark;
+
+  /* Base colors */
+  --color-bg: #00092C; /* Dark Blue */
+  --color-card: #000620; /* Darker Blue */
+  --color-text: #EEEEEE; /* Light Grey */
+  --color-text-secondary: #DDDDDD; /* Darker Grey */
+
+  /* Accent colors - can be overridden by color schemes */
+  --color-accent-1: #FF5F00; /* Orange */
+  --color-accent-2: #B20600; /* Maroon */
+  --color-accent-3: #EEEEEE; /* Light Grey */
+
+  /* Additional color variables */
+  --color-orange: #FF5F00;
+  --color-maroon: #B20600;
+  --color-dark-blue: #00092C;
+  --color-grey: #EEEEEE;
+
+  /* UI colors */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+}
+
+/* Light theme */
+.theme-light {
+  color-scheme: light;
+
+  /* Base colors */
+  --color-bg: #F8FAFC; /* Light Blue Grey */
+  --color-card: #FFFFFF; /* White */
+  --color-text: #1E293B; /* Slate 800 */
+  --color-text-secondary: #475569; /* Slate 600 */
+
+  /* Accent colors remain the same by default */
+
+  /* UI colors - slightly adjusted for light theme */
+  --color-success: #059669;
+  --color-warning: #D97706;
+  --color-error: #DC2626;
+  --color-info: #2563EB;
+}
+
+body {
+  @apply font-inter min-h-screen text-base;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 95, 0, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(178, 6, 0, 0.08) 0%, transparent 30%);
+  letter-spacing: -0.011em;
+}
+
+/* Light theme body background */
+.theme-light body {
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 95, 0, 0.04) 0%, transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(178, 6, 0, 0.04) 0%, transparent 30%);
+}
+
+.glass-card {
+  @apply backdrop-blur-lg rounded-xl border shadow-lg;
+  background-color: rgba(30, 41, 59, 0.7);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Light theme glass card */
+.theme-light .glass-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-text {
+  @apply font-inter font-bold;
+  background: linear-gradient(90deg, var(--color-accent-1), var(--color-accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(90deg, var(--color-accent-1), var(--color-accent-2));
+}
+
+.gradient-border > div {
+  background-color: var(--color-card);
+  border-radius: 11px;
+  height: 100%;
+  width: 100%;
+}
+
+.network-pulse {
+  @apply w-3 h-3 rounded-full animate-pulse-slow;
+  background-color: var(--color-accent-1); /* Orange */
+}
+
+.network-pulse-sepolia {
+  @apply w-3 h-3 rounded-full animate-pulse-slow;
+  background-color: var(--color-accent-2); /* Maroon */
+}
+
+.truncated-address {
+  @apply font-proto-mono text-sm tracking-tight;
+}
+
+.token-badge {
+  @apply flex items-center justify-center w-10 h-10 rounded-full text-white font-bold text-xs;
+  background: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Typography utilities */
+.text-display {
+  @apply font-inter font-bold text-3xl md:text-4xl lg:text-5xl tracking-tight;
+  letter-spacing: -0.03em;
+}
+
+.text-heading {
+  @apply font-inter font-semibold text-xl md:text-2xl tracking-tight;
+  letter-spacing: -0.02em;
+}
+
+.text-body {
+  @apply font-inter text-base leading-relaxed;
+}
+
+.text-mono {
+  @apply font-proto-mono text-sm tracking-tight;
+}
+
+/* Card hover effects */
+.card-hover-effect {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-hover-effect:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Token badge styles */
+.token-stack {
+  display: flex;
+  margin-left: -0.5rem;
+}
+
+.token-stack > * {
+  margin-left: -1rem;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.8);
+  transition: transform 0.2s ease;
+}
+
+.token-stack > *:hover {
+  transform: translateY(-4px);
+  z-index: 10;
+}

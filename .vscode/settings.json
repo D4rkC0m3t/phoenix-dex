@@ -1,0 +1,8 @@
+{
+    "CodeGPT.apiKey": "CodeGPT Plus Beta",
+    "blinky.repro.buildCommand": "node scan-ts-issues.js",
+    "blinky.repro.testCommand": "echo \"Scan done\"",
+    "blinky.repro.expectedInstruction": "Detect and list:\n- All usage of `ethers.providers.JsonRpcProvider` and suggest using `new JsonRpcProvider()` instead.\n- All import statements that bring in interfaces or types but are missing `type`.\n- Export errors where named exports are missing (e.g. ManagedWallet).\n",
+    "blinky.repro.expectedStatus": "",
+    "blinky.repro.expectedBody": "List of file paths with problems, type import fixes, ethers usage, and export mismatches.\n"
+}
